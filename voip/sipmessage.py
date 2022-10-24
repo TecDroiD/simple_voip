@@ -157,7 +157,7 @@ class SIPRequest(SIPMessage):
 
         self.headsip = server
         self.userip = userip
-        self.set_via(f't3cDr01d{uuid.uuid4().hex[:25]}')
+        self.set_via(f'z9hG4bKt3cDr01d{uuid.uuid4().hex[:25]}')
         self.set_expires()
         self.set('User-Agent', 'T3cPh0n3 0.1')
         self.set('Allow', 'INVITE, ACK, BYE, CANCEL')
@@ -172,15 +172,18 @@ class SIPRequest(SIPMessage):
         '''
         s =  f'{caller}'
         if 'tag' in self.__dict__:
-            s += ';tag={self.tag}'
+            s += f';tag={self.tag}'
         self.set('From',s)
 
     def set_to(self, destination):
         ''' add a receiver entry
         '''
+        if type(destination) == list:
+            self.set('To', ' '.join(destination))
+            return
         s =  f'{destination}'
         if 'tag' in self.__dict__:
-            s += ';tag={self.tag}'
+            s += f';tag={self.tag}'
         self.set('To', s)
 
     def set_callid(self, call_id):

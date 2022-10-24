@@ -77,7 +77,7 @@ class Protocol():
         self.version = version
         self.headers = {}
         self.content = ''
-        self.set_via(f't3cDr01d{uuid.uuid4().hex[:25]}')
+        self.set_via(f'z9hG4bKt3cDr01d{uuid.uuid4().hex[:25]}')
         self.set_expires()
         self.append('User-Agent', 'T3cPh0n3 0.1')
         self.append('Allow', 'INVITE, ACK, BYE, CANCEL')
@@ -142,7 +142,7 @@ class Protocol():
         '''
         s =  f'{caller}'
         if 'tag' in self.__dict__:
-            s += ';tag={self.tag}'
+            s += f';tag={self.tag}'
         self.append('From',s)
 
     def set_to(self, destination):
@@ -150,7 +150,7 @@ class Protocol():
         '''
         s =  f'{destination}'
         if 'tag' in self.__dict__:
-            s += ';tag={self.tag}'
+            s += f';tag={self.tag}'
         self.append('To', s)
 
     def set_callid(self, call_id):
