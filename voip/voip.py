@@ -109,13 +109,19 @@ class VoIP(UDPClient):
         self.proxy = proxy
         self.call_id = self._gen_callid()
 
+    def sip_request(self, request):
+        ''' creates a request and responds a SIPMessage
+        '''
+        retval = self.do_request(request)
+        return SIPMessage.from_text(self.server.encode('utf8'), retval)
+
     def connect(self):
         ''' connect to server and authentify
         '''
         self.open()
         # send register request
         register = Register(self.server, self.caller_id, self.call_id)
-        resp = self.do_request(register, raw=False)
+        resp = self.sip_request(register)
 
         if resp.code == 401:
             # generate authentication response
@@ -130,7 +136,7 @@ class VoIP(UDPClient):
                 self.gen_authorization(values,method)
                 )
 
-            resp = self.do_request(register, raw=False)
+            resp = self.sip_request(register)
             if resp.code != 200:
                 raise(
                     f'authentication got returnval {resp.code} {resp.message}'
@@ -148,7 +154,7 @@ class VoIP(UDPClient):
         '''
         # call the number first
         invite = Invite(self.server, self.caller_id, self.call_id, number)
-        resp = self.do_request(invite, False)
+        resp = self.sip_request(invite)
         # response can be one of those
         if resp.code == 401: # authorization
             invite.set_sequence(int (resp.get('CSeq')[0]) +1)
@@ -159,7 +165,7 @@ class VoIP(UDPClient):
                 'Authorization',
                 self.gen_authorization(values,method)
                 )
-            resp = self.do_request(invite, raw=False)
+            resp = self.sip_request(invite)
 
         elif resp.code == 407: #proxy authenticate
             invite.set_sequence(int (resp.get('CSeq')[0]) +1)
@@ -170,13 +176,14 @@ class VoIP(UDPClient):
                 'Authorization',
                 self.gen_authorization(values,method)
                 )
-            resp = self.do_request(invite, raw=False)
+            resp = self.sip_request(invite)
         else:
             raise(f'Unexpected Response Code {resp.code} {resp.message}')
 
         # wait until it has been received or hung up
         while resp.code in [100,183,401]:
-            resp = self.recv(self.BUFFERSIZE, raw=False)
+            retval = self.recv(self.buffersize)
+            resp = SIPMessage.from_text(self.server.encode('utf8'), retval)
 
         # if call is received, send ack
         if resp.code == 200:

@@ -47,7 +47,7 @@ def main(args):
     vp = VoIP(server, user, password, proxy=proxy, callback=called)
     vp.connect()
 
-    call = vp.call('01752332091')
+    call = vp.call('01752002091')
     if call is not None:
         time.sleep(1)
         call.send_raw(data)

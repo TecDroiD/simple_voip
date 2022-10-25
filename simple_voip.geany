@@ -27,18 +27,18 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=6
+current_page=1
 FILE_NAME_0=23;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2F__init__.py;0;4
-FILE_NAME_1=834;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fvoip.py;0;4
-FILE_NAME_2=399;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoipmain.py;0;4
-FILE_NAME_3=14;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fprotocol.py;0;4
+FILE_NAME_1=1352;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoipmain.py;0;4
+FILE_NAME_2=4702;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fvoip.py;0;4
+FILE_NAME_3=4487;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fprotocol.py;0;4
 FILE_NAME_4=3978;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fsipmessage.py;0;4
 FILE_NAME_5=411;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2Ftrash%2Fvoip%2Fvoiptest.py;0;4
-FILE_NAME_6=880;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Frtp.py;0;4
-FILE_NAME_7=1901;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fudp.py;0;4
+FILE_NAME_6=131;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Frtp.py;0;4
+FILE_NAME_7=2120;Python;0;EUTF-8;0;1;1;%2Fhome%2Ftecdroid%2FProjekte%2Ftecdroid%2Fsimple_voip%2Fvoip%2Fudp.py;0;4
 
 [VTE]
-last_dir=/home/tecdroid/Projekte/tecdroid/simple_voip/voip
+last_dir=/home/tecdroid/Projekte/tecdroid/simple_voip
 
 [prjorg]
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;*.m;

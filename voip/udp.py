@@ -82,5 +82,5 @@ class UDPClient():
         ''' send a text and wait for return value as raw (default) or SIPMessage
         '''
         self.send(text)
-        return self.recv(UDPClient.BUFFERSIZE, raw=raw)
+        return self.recv(self.buffersize, raw=raw)
 
