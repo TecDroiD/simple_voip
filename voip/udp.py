@@ -52,17 +52,14 @@ class UDPClient():
             self.socket.close()
             self.socket = None
 
-    def recv(self, buffersize, timeout=30, raw=True):
+    def recv(self, buffersize, timeout=30):
         ''' receive data
         '''
         ready = select.select([self.socket], [], [], timeout)
         if ready[0]:
             retval = self.socket.recv(buffersize)
             self.log.debug(f'RECEIVED\n====\n{retval.decode()}====\n')
-            if raw:
-                return retval
-            else:
-                return SIPMessage.from_text(self.server.encode('utf8'), retval)
+            return retval
         else:
             self.log.error('receive timeout')
             raise TimeoutError("Receiving data from Server timed out")
@@ -79,9 +76,8 @@ class UDPClient():
         self.log.debug(f'SENDING {len(data)}bytes\n')
         self.socket.sendto(data,(self.server, self.port))
 
-    def do_request(self, text, raw=True):
-        ''' send a text and wait for return value as raw (default) or SIPMessage
+    def do_request(self, text):
+        ''' send a text and wait for return value as raw
         '''
         self.send(text)
-        return self.recv(self.buffersize, raw=raw)
-
+        return self.recv(self.buffersize)

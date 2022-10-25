@@ -148,10 +148,13 @@ class Protocol():
     def set_to(self, destination):
         ''' add a receiver entry
         '''
-        s =  f'{destination}'
-        if 'tag' in self.__dict__:
-            s += f';tag={self.tag}'
-        self.append('To', s)
+        if type(destination) == list:
+            self.set('To', ' '.join(destination))
+        else:
+            s =  f'{destination}'
+            if 'tag' in self.__dict__:
+                s += f';tag={self.tag}'
+            self.append('To', s)
 
     def set_callid(self, call_id):
         ''' add a call id entry
