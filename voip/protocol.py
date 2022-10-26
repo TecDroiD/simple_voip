@@ -77,7 +77,7 @@ class Protocol():
         self.version = version
         self.headers = {}
         self.content = ''
-        self.set_via(f't3cDr01d{uuid.uuid4().hex[:25]}')
+        self.set_via(f'z9hG4bKt3cDr01d{uuid.uuid4().hex[:25]}')
         self.set_expires()
         self.append('User-Agent', 'T3cPh0n3 0.1')
         self.append('Allow', 'INVITE, ACK, BYE, CANCEL')

@@ -2,6 +2,7 @@ import logging
 import socket
 import select
 from threading import Timer, Lock
+from voip.sipmessage import SIPMessage
 
 class UDPClient():
     def __init__(self, server, port, callback = None, buffersize=8196):
@@ -80,4 +81,3 @@ class UDPClient():
         '''
         self.send(text)
         return self.recv(self.buffersize)
-

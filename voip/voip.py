@@ -231,7 +231,7 @@ class VoIP(UDPClient):
 
         # generate digest string
         s = f'Digest username="{self.user}",realm="{realm}",' + \
-            f'nonce="{nonce}",uri="{sipuri}"' + \
+            f'nonce="{nonce}",uri="{sipuri}",' + \
             f'response="{response}",algorithm=MD5'
         return s
 
